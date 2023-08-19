@@ -1,26 +1,39 @@
-import { Metadata } from "next";
-export const metadata: Metadata = {
-    title: "Characters",
-    description: "Dungeon Driver About Page",   
-}
+import Link from 'next/link';
 
-export default function Characters() {
+export default async function Blog() {
+  const posts = await fetch('http://localhost:3000/api/characters', {cache: "no-cache"}).then((res) =>
+    res.json()
+  );
   return (
-    <main className="flex-initial w-90 p-4 border-4 bg-slate-900 m-20">
-      <h1 className="bg-slate-800 p-4">About</h1>
-      <p className="p-4 bg-black">
-        Welcome to DungeonDriver, your indispensable ally for creating truly
-        immersive tabletop gaming experiences! Whether you're weaving intricate
-        narratives, managing epic encounters, or guiding a band of adventurers
-        through a world of your creation, our tool stands ready to help. Our
-        goal is to provide a dynamic set of tools that allows you to focus on
-        storytelling and player engagement, while we handle the logistical
-        details—all from the comfort of your own hardware. Are you ready to
-        revolutionize your role as a Dungeon Master? Gather your party, embark
-        on tales of suspense and excitement, and let DungeonMaster Assistant be
-        your trusted co-pilot in managing the game. Get ready to elevate your
-        Dungeon Master experience like never before!
-      </p>
-    </main>
+    <div>
+      <div className="min-h-screen bg-gray-900 px-10">
+        <div className="px-10">
+          <h1 className=" px-10 text-4xl font-semibold text-center text-gray-100">
+            Characters           <Link href={`/characters/create`}>
+            <button className="bg-green-950 px-4">Create</button>
+          </Link></h1>
+
+        </div>
+        <ul className="grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {posts.map((character: any) => (
+            <li key={character.id} className="flex flex-col overflow-hidden bg-white rounded-lg shadow-md">
+              <Link href={`/characters/${character.id}`}>
+                <p className="flex items-center justify-center h-48 bg-gray-400">
+                  <span className="text-lg font-semibold text-white">{character.name}</span>
+                </p>
+              </Link>
+              <div className="flex flex-col justify-between flex-1 p-6">
+                <div>
+                  <p className="text-sm text-gray-600">Class : {character.class}</p>
+                  <p className="mt-2 text-sm text-gray-600">Level : {character.level}</p>
+                  <p className="mt-2 text-sm text-gray-600">Background : {character.background}</p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
   );
 }

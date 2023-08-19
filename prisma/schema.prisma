@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
@@ -41,7 +41,7 @@ model Session {
 model User {
   id            String    @id @default(cuid())
   name          String?
-  email         String   @unique
+  email         String    @unique
   emailVerified DateTime?
   image         String?
   age           Int?
@@ -50,6 +50,15 @@ model User {
   following     Follows[] @relation("follower")
   followedBy    Follows[] @relation("following")
   sessions      Session[]
+}
+
+model Character {
+  id         String  @id @default(cuid())
+  name       String
+  class      String
+  race       String
+  level      Int
+  background String?
 }
 
 model Follows {

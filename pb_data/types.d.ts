@@ -1235,7 +1235,7 @@ namespace os {
   * Process stores the information about a process created by StartProcess.
   */
  interface Process {
-  pid: number
+  pid: string
  }
  /**
   * ProcAttr holds the attributes that will be applied to a new process
@@ -1303,7 +1303,7 @@ namespace os {
    * On Unix systems, FindProcess always succeeds and returns a Process
    * for the given pid, regardless of whether the process exists.
    */
-  (pid: number): (Process | undefined)
+  (pid: string): (Process | undefined)
  }
  interface startProcess {
   /**
@@ -1783,7 +1783,7 @@ namespace os {
    * On Windows or Plan 9, Chown always returns the syscall.EWINDOWS or
    * EPLAN9 error, wrapped in *PathError.
    */
-  (name: string, uid: number): void
+  (name: string, uid: string): void
  }
  interface lchown {
   /**
@@ -1794,7 +1794,7 @@ namespace os {
    * On Windows, it always returns the syscall.EWINDOWS error, wrapped
    * in *PathError.
    */
-  (name: string, uid: number): void
+  (name: string, uid: string): void
  }
  interface File {
   /**
@@ -1804,7 +1804,7 @@ namespace os {
    * On Windows, it always returns the syscall.EWINDOWS error, wrapped
    * in *PathError.
    */
-  chown(uid: number): void
+  chown(uid: string): void
  }
  interface File {
   /**
@@ -6456,7 +6456,7 @@ namespace syscall {
    * number in the parent process.
    */
   foreground: boolean
-  pgid: number // Child's process group ID if Setpgid.
+  pgid: string // Child's process group ID if Setpgid.
   pdeathsig: Signal // Signal that the process will get when its parent dies (Linux and FreeBSD only)
   cloneflags: number // Flags for clone calls (Linux only)
   unshareflags: number // Flags for unshare calls (Linux only)
@@ -13660,8 +13660,8 @@ namespace syscall {
   * See user_namespaces(7).
   */
  interface SysProcIDMap {
-  containerID: number // Container ID.
-  hostID: number // Host ID.
+  containerid: string // Container ID.
+  hostid: string // Host ID.
   size: number // Size.
  }
  // @ts-ignore
@@ -13671,8 +13671,8 @@ namespace syscall {
   * by a child process started by StartProcess.
   */
  interface Credential {
-  uid: number // User ID.
-  gid: number // Group ID.
+  uid: string // User ID.
+  gid: string // Group ID.
   groups: Array<number> // Supplementary group IDs.
   noSetGroups: boolean // If true, don't set supplementary groups
  }

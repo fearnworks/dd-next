@@ -3,7 +3,7 @@ import { prisma } from '@/lib/prisma';
 import { redirect } from 'next/navigation';
 import { authOptions } from "../../api/auth/[...nextauth]/route"
 
-import {CharacterForm } from "./CharacterForm";
+import {CharacterCreateForm } from "./CharacterCreateForm";
 interface Character {
   name: string;
   id: string;
@@ -19,7 +19,7 @@ interface Props {
 }
 
 
-export default async function CharacterPage({ params }: Props) {
+export default async function CharacterCreatePage({ params }: Props) {
   console.log(params)
   const session = await getServerSession(authOptions);
 
@@ -42,7 +42,7 @@ export default async function CharacterPage({ params }: Props) {
 
   return (
     <>
-      <CharacterForm character={character} />
+      <CharacterCreateForm character={character} />
     </>
   );
 }
