@@ -26,6 +26,9 @@ export default async function NavMenu() {
           <Link href={"/characters"}>Characters</Link>
         </li>
         <li>
+          <Link href={'/users'}>Users</Link>
+        </li>
+        <li>
           <SignInButton />
         </li>
         <li>
