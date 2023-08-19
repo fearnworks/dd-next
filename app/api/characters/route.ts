@@ -1,8 +1,6 @@
 
 import { NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
 import { prisma } from '@/lib/prisma';
-import { authOptions } from "../auth/[...nextauth]/route"
 
 export async function POST(req: Request) {
   const character  = await req.json();
@@ -42,7 +40,7 @@ export async function PUT(req: Request) {
   return NextResponse.json(record);
 }
 
-export async function GET(request: Request) {
+export async function GET() {
     const characters = await prisma.character.findMany();
 
   
