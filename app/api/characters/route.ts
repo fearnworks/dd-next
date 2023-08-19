@@ -5,7 +5,6 @@ import { prisma } from '@/lib/prisma';
 import { authOptions } from "../auth/[...nextauth]/route"
 
 export async function POST(req: Request) {
-  const session = await getServerSession(authOptions);
   const character  = await req.json();
   console.log("CREATE CHARACTER")
   console.log(character)
@@ -28,7 +27,6 @@ export async function POST(req: Request) {
 
 
 export async function PUT(req: Request) {
-  const session = await getServerSession(authOptions);
   const character  = await req.json();
   console.log("PUT CHARACTER")
   console.log(character)

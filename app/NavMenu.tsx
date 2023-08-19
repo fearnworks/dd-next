@@ -9,7 +9,6 @@ export default async function NavMenu() {
       <Link href={"/"} className="p-4">
         <Image
           src="/logo_2.png"
-          alt="logo"
           width={280}
           height={80}
           alt="DungeonDriver Logo"

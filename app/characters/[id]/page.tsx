@@ -3,7 +3,7 @@ import { prisma } from '@/lib/prisma';
 import { redirect } from 'next/navigation';
 import { authOptions } from "../../api/auth/[...nextauth]/route"
 
-import {CharacterForm } from "./CharacterForm";
+import {CharacterForm } from "@/components/CharacterForm";
 interface Character {
   name: string;
   id: string;

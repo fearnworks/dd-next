@@ -10,7 +10,7 @@ export default function About() {
       <h1 className="bg-slate-800 p-4">About</h1>
       <p className="p-4 bg-black">
         Welcome to DungeonDriver, your indispensable ally for creating truly
-        immersive tabletop gaming experiences! Whether you're weaving intricate
+        immersive tabletop gaming experiences! Whether you are weaving intricate
         narratives, managing epic encounters, or guiding a band of adventurers
         through a world of your creation, our tool stands ready to help. Our
         goal is to provide a dynamic set of tools that allows you to focus on

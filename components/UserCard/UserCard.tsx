@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styles from './UserCard.module.css';
-
+import Image from 'next/image';
 interface Props {
   id: string;
   name: string | null;
@@ -11,7 +11,7 @@ interface Props {
 export default function UserCard({ id, name, age, image }: Props) {
   return (
     <div className="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">
-      <img
+      <Image
         src={image ?? '/mememan.webp'}
         alt={`${name}'s profile`}
         className={styles.cardImage}
