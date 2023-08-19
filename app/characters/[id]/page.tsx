@@ -18,7 +18,7 @@ export async function generateStaticParams() {
 
 export default async function CharacterPage({ params }: Props) {
   const characters: Character[] = await GET().then((res) => res.json());
-  const character: Character = await characters.find((character) => character.id === params.id);
+  const character = await characters.find((character) => character.id === params.id);
 
   return (
     <>
