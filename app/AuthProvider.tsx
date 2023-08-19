@@ -1,6 +1,5 @@
 'use client';
 
-import { Session } from "inspector";
 import { SessionProvider } from "next-auth/react";
 
 type Props = {

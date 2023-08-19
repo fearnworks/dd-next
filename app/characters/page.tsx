@@ -1,8 +1,9 @@
-
+import { Character } from "@/schemas/Character";
 import CharacterList from "@/components/CharacterList";
+import { GET } from "../api/characters/route";
 
 export default async function CharactersPage() {
-  const characters = await fetch("http://localhost:3000/api/characters").then(
+  const characters: Character[] = await GET().then(
     (res) => res.json()
   );
   return (

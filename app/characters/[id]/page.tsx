@@ -1,16 +1,6 @@
-import { getServerSession } from 'next-auth';
-import { prisma } from '@/lib/prisma';
-import { redirect } from 'next/navigation';
-import { authOptions } from "../../api/auth/[...nextauth]/route"
-
 import {CharacterForm } from "@/components/CharacterForm";
-interface Character {
-  name: string;
-  id: string;
-  class: string;
-  level: number;
-  background: string;
-}
+import { GET } from "@/app/api/characters/route";
+import {Character} from "@/schemas/Character";
 
 interface Props {
   params: {
@@ -18,27 +8,17 @@ interface Props {
   };
 }
 
+export async function generateStaticParams() {
+  const characters = await GET().then((res) => res.json())
+ 
+  return  characters.map((character: Character) => ({
+    id: character.id,
+  }))
+}
 
 export default async function CharacterPage({ params }: Props) {
-  console.log(params)
-  const session = await getServerSession(authOptions);
-
-  if (!session) {
-    redirect('/api/auth/signin');
-  }
-
-  const currentUserEmail = session?.user?.email!;
-  const user = await prisma.user.findUnique({
-    where: {
-      email: currentUserEmail,
-    },
-  });
-
-
-  const characters: Character[] = await fetch(
-    "http://localhost:3000/api/characters"
-  ).then((res) => res.json());
-  const character = await characters.find((character) => character.id === params.id);
+  const characters: Character[] = await GET().then((res) => res.json());
+  const character: Character = await characters.find((character) => character.id === params.id);
 
   return (
     <>
