@@ -42,7 +42,7 @@ export default async function CharacterCreatePage({ params }: Props) {
 
   return (
     <>
-      <CharacterCreateForm character={character} />
+      <CharacterCreateForm/>
     </>
   );
 }
