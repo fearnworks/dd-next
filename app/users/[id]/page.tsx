@@ -23,6 +23,7 @@ export default async function UserProfile({ params }: Props) {
 
       <Image
         width={300}
+        height={300}
         src={image ?? '/mememan.webp'}
         alt={`${name}'s profile`}
       />
