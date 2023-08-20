@@ -19,10 +19,8 @@ export async function POST(req: Request) {
 
     },
   });
-
   return NextResponse.json(record);
 }
-
 
 export async function PUT(req: Request) {
   const character  = await req.json();

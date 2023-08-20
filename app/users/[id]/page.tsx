@@ -1,4 +1,5 @@
-import FollowButton from '@/components/FollowButton/FollowButton';
+export const dynamic = 'force-dynamic'
+
 import { prisma } from '@/lib/prisma';
 import { Metadata } from 'next';
 import Image from 'next/image';

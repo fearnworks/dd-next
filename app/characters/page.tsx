@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { Character } from "@/schemas/Character";
 import CharacterList from "@/components/CharacterList";
 import { GET } from "../api/characters/route";
